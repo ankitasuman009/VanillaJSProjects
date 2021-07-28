@@ -1,13 +1,15 @@
 /** @type {HTMLCanvasElement} */
 
 const canvas = document.getElementById("canvas1");
-const ctx = canvas.getContext("2d");
-console.log(ctx);
+const ctx1 = canvas.getContext("2d");
+const ctx2 = canvas.getContext("2d");
+// console.log(ctx);
 
 canvas.width =  window.innerWidth;
 canvas.height = window.innerHeight;
 class Root{
-    constructor(x, y){
+    constructor(x, y, i){
+        this.i = i;
         this.x = x;
         this.y = y;
         this.speedX = Math.random() * 4 - 2;
@@ -20,13 +22,26 @@ class Root{
         this.y += this.speedY;
         this.size += 0.1;
         if(this.size < this.maxSize){
-            ctx.beginPath(); //begin path not connect with previous line
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fillStyle = 'blue';
-            // ctx.strokeStyle = 'blue';
-            ctx.lineWidth = 10;
-            ctx.fill();
-            ctx.stroke();
+            if(this.i==0){
+                ctx1.beginPath(); //begin path not connect with previous line
+                ctx1.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx1.fillStyle = 'blue';
+                // ctx.strokeStyle = 'blue';
+                ctx1.lineWidth = 10;
+                ctx1.fill();
+                ctx1.stroke();
+                this.i = 1;
+            }
+            else{
+                ctx2.beginPath(); //begin path not connect with previous line
+                ctx2.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx2.fillStyle = 'white';
+                // ctx.strokeStyle = 'blue';
+                ctx2.lineWidth = 10;
+                ctx2.fill();
+                ctx2.stroke();
+                this.i = 0;
+            }
             requestAnimationFrame(this.update.bind(this));
         }
     }
@@ -34,8 +49,10 @@ class Root{
 
 
 window.addEventListener('mousemove', function(e){
-    const root = new Root(e.x, e.y);
-    root.update();
+    for(let i=0;i<5;i++){
+        const root = new Root(e.x, e.y, 0);
+        root.update();
+    }
 });
 
  
