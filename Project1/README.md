@@ -1,8 +1,7 @@
 Its a beginner level project in which I used canvas element and vanilla JavaScript.
 
+Just hover your mouse!
 
 
-https://user-images.githubusercontent.com/55661555/127316630-8634b3c0-6d9e-46eb-b2e7-97b6bb924f85.mp4
-
-
+https://user-images.githubusercontent.com/55661555/127318963-0c6d301a-f97f-4ecc-896b-fac7c6446cf7.mp4
 
